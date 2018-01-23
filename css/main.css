@@ -1,0 +1,560 @@
+@font-face {
+    font-family: 'lato-black';
+    src: url('../fonts/lato-black.woff') format('woff'),
+         url('../fonts/lato-black.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-hairline.woff') format('woff'),
+         url('../fonts/lato-hairline.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-light.woff') format('woff'),
+         url('../fonts/lato-light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lato';
+    src: url('../fonts/lato-bold.woff') format('woff'),
+         url('../fonts/lato-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway';
+    src: url('../fonts/raleway-bold.woff') format('woff'),
+         url('../fonts/raleway-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway';
+    src: url('../fonts/raleway-light.woff') format('woff'),
+         url('../fonts/raleway-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'raleway';
+    src: url('../fonts/raleway-regular.woff') format('woff'),
+         url('../fonts/raleway-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*****************************************************************************
+ * DEFAULTS
+ */
+
+.row {
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: 30px auto;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, td, th, a {
+    font-family: "raleway", Helvetica, Arial, sans-serif;
+    color: #454545;
+}
+
+h1, h2 {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+p, li {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+a {
+    color: #7aaf6e;
+}
+
+a:hover {
+    color: #345b2c;
+}
+
+body.orange a {
+    color: #c65825;
+}
+
+body.orange a:hover {
+    color: #6d2b0d;
+}
+
+/*****************************************************************************
+ * HEADERS
+ */
+
+.top-bar .toggle-topbar.menu-icon {
+    top: 0;
+    margin-top: 0;
+}
+
+.top-bar .toggle-topbar.menu-icon a {
+    padding: 0 2rem 0 0.9375rem;
+}
+
+.top-bar .toggle-topbar.menu-icon a span::after {
+    right: 0;
+}
+
+.top-bar.expanded .toggle-topbar.menu-icon a {
+    color: #fbdd90;
+}
+
+.top-bar.expanded .toggle-topbar a span::after {
+    box-shadow: 0 0 0 1px #fbdd90,
+                0 7px 0 1px #fbdd90,
+                0 14px 0 1px #fbdd90;
+}
+
+.top-bar,
+.top-bar-section li:not(.has-form) a:not(.button),
+.top-bar-section li:not(.has-form) a:not(.button):hover,
+.top-bar-section ul li,
+.top-bar.expanded .title-area,
+.no-js .top-bar-section ul li:hover > a {
+    background: transparent;
+    line-height: normal;
+    padding: 20px 0;
+    text-shadow: 0 0 2px #000;
+}
+
+.top-bar-section ul li {
+    max-width: 13em;
+}
+
+.top-bar.expanded .top-bar-section ul li a {
+    text-shadow: none;
+}
+
+body section:first-child {
+    background: #487c26;
+    background-size: cover;
+}
+
+body.orange section:first-child {
+    background: #f27a35;
+    background-size: cover;
+}
+
+body section:first-child.hero {
+    background: url('../img/header.jpg') no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.hero {
+    width: 100%;
+    height: 550px;
+}
+
+.hero .caption {
+    margin-top: 20px;
+}
+
+.hero .caption h1 {
+    font-family: "lato-black", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 70px;
+    padding-bottom: 0;
+}
+
+.hero .caption h2 {
+    font-family: "lato", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 25px;
+    text-shadow: 2px 2px 4px #000;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 45px;
+    margin-bottom: 50px;
+}
+
+.hero + section {
+    margin-top: 100px;
+}
+
+.hero header {
+    margin-bottom: 20px;
+}
+
+header {
+    width: 100%;
+    height: 120px;
+    background: transparent;
+    margin-bottom: 100px;
+}
+
+header .row {
+    margin: 0 auto;
+}
+
+header .top-bar-section ul {
+    float: right !important;
+}
+
+header .top-bar-section ul li a {
+    color: #ffffff;
+    font-family: "raleway", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 30px;
+    letter-spacing: .5px;
+}
+
+header .top-bar-section ul li:last-child a {
+    margin-right: 10;
+}
+
+
+header .top-bar-section li:not(.has-form) a:not(.button) {
+    transition:all .2s linear;
+}
+
+header .top-bar-section li:not(.has-form) a:not(.button):hover {
+    color: #fbdd90;
+}
+
+/*****************************************************************************
+ * CONTENT
+ */
+
+.twitter {
+    max-height: 700px;
+    max-width: 400px;
+    overflow: auto;
+}
+
+.youtube iframe {
+    width: 560px;
+    height: 315px;
+}
+
+.watch-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.list {
+    text-align: center;
+}
+
+.list p {
+    line-height: 30px;
+}
+
+.list img {
+    margin-bottom: 20px;
+    transition: all .2s ease-in-out;
+}
+
+.list a img:hover {
+    transform: scale(1.1);
+}
+
+.events.list img {
+    text-align: right;
+}
+
+.events.list h2,
+.events.list p {
+    text-align: left;
+}
+
+.services.list img {
+    width: 100px;
+    height: 100px;
+}
+
+.people.list img {
+    display: block;
+    margin: 0 auto 20px auto;
+    height: 140px;
+    object-fit: cover;
+}
+
+.row table {
+    width: 100%;
+}
+
+a[data-map] {
+    color: #fff;
+    margin-bottom: 1em;
+    padding: 8px;
+    display: block;
+    background: #487c26;
+    border-radius: 4px;
+}
+
+body.orange a[data-map] {
+    color: #fff;
+    background: #f27a35;
+}
+
+/*****************************************************************************
+ * FOOTER
+ */
+
+footer {
+    margin-top: 100px;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    background: #487c26;
+}
+
+footer .row {
+    min-height: 100px;
+}
+
+body.orange footer {
+    background: #f27a35;
+}
+
+body footer h1,
+body footer p,
+body footer a,
+body.orange footer a {
+    color: #fff;
+}
+
+footer .copyrights h1 {
+    text-align: left;
+    font-family: "lato", Helvetica, Arial, sans-serif;
+    font-variant: small-caps;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+footer .copyrights p {
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+
+footer .contact p {
+    text-align: right;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+}
+
+body.orange footer a:hover {
+    color: #6d2b0d;
+}
+
+footer a:hover {
+    color: #315134;
+}
+
+/*****************************************************************************
+ * BACK TO TOP BUTTON
+ */
+
+.btn-fancy {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: #454545;
+    font-family: "raleway", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 2px;
+    background: transparent;
+    transition:all .2s ease-out;
+}
+
+.btn-fancy .text-layer {
+    position: relative;
+}
+
+.btn-fancy:hover,
+.btn-fancy:focus {
+    color: #454545;
+}
+
+.btn-fancy .border-layer {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #000000;
+    transition:all .2s ease-out;
+}
+
+.btn-fancy .solid-layer {
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    background: #b8e69a;
+    border-radius: 2px;
+    transition:all .2s ease-out;
+}
+
+body.orange .btn-fancy .solid-layer {
+    background: #f3ba93;
+}
+
+.btn-fancy:hover .border-layer {
+    transform:translate(-2px,2px);
+}
+
+.btn-fancy:hover .solid-layer {
+    transform:translate(2px,-2px);
+}
+
+#back-top {
+    text-decoration: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .9s;
+}
+
+.btn-fancy#back-top {
+    padding: 6px 16px;
+}
+
+.btn-fancy#back-top:hover .border-layer {
+    transform:translate(-2px, 2px);
+}
+
+.btn-fancy#back-top:hover .solid-layer {
+    transform:translate(2px, -2px);
+}
+
+/*****************************************************************************
+ * FIX-UPS FOR SMALL SCREENS
+ */
+
+@media only screen and (max-width: 40em) {
+    .list.row {
+        margin: 0 auto;
+    }
+
+    .top-bar .top-bar-section {
+        display: none;
+    }
+
+    .top-bar.expanded .top-bar-section {
+        display: block;
+    }
+
+    .top-bar-section ul {
+        margin-top: 30px;
+        background: #ffffff;
+    }
+
+    .hero .top-bar-section ul {
+        margin-top: 50px;
+    }
+
+    .top-bar-section ul li {
+        max-width: inherit;
+        padding: 0;
+    }
+
+    .top-bar-section li:not(.has-form) a:not(.button) {
+        color: #454545;
+        margin: 0;
+        display: block;
+        text-align: center;
+        padding: 30px 0;
+        background: #ffffff;
+        border-bottom: 1px solid #fff4d7;
+        transition: all .2s linear;
+    }
+
+    header .top-bar-section li:not(.has-form):last-child a:not(.button) {
+        border: 0;
+    }
+
+    header .top-bar-section li:not(.has-form) a:not(.button):hover {
+        color: #454545;
+        background: #fbdd90;
+        padding: 30px 0;
+        text-shadow: none;
+    }
+
+    .hero nav {
+        margin-top: 20px;
+    }
+
+    .hero .caption {
+        margin-top: 40px;
+    }
+
+    .hero .caption h1 {
+        font-size: 45px;
+        line-height: 45px;
+    }
+
+    .hero .caption h2 {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    footer .copyrights h1,
+    footer .copyrights p,
+    footer .contact p {
+        text-align: center;
+    }
+
+    .twitter {
+        display: none;
+    }
+
+    .youtube iframe {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 64.063em) {
+    #back-top {
+        right: 40px;
+        bottom: 40px;
+        margin-top: -22px;
+    }
+}

@@ -1,0 +1,103 @@
+/*    Footer    */
+
+footer{
+	padding-top: 40px;
+  padding-bottom: 80px;
+	background: #f27a35;
+}
+
+footer .orange{
+	padding-top: 40px;
+  padding-bottom: 80px;
+	background: #f27a35;
+}
+
+footer .copyrights{
+	float: left;
+	margin-bottom: 80px;
+  width: 430px;
+}
+
+footer .copyrights p{
+	color: white;
+	font-family: "raleway-regular", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	letter-spacing: .5px;
+}
+
+footer .copyrights h1 {
+  text-transform: none;
+  font-variant: small-caps;
+  color: #fff;
+  font-family: "lato-bold", Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+footer .contact_details{
+	max-width: 430px;
+	float: right;
+    display: inline-block;
+	color: #fff;
+	font-family: "raleway-regular", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+}
+
+footer .contact_details p{
+	float: right;
+}
+
+footer .social{
+	width: 130px;
+	display: inline-block;
+}
+
+footer .social ul{
+	margin: 0;
+}
+
+footer .social ul li{
+	margin-bottom: 7px;
+}
+
+footer .social ul li a,
+footer .contact{
+	display: inline-block;
+	color: #fff;
+	font-family: "raleway-regular", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+}
+
+footer .contact{
+	width: 215px;
+	margin-left: 80px;
+	vertical-align: top;
+}
+
+footer .contact .details{
+	margin-bottom: 30px;
+}
+
+footer .row{
+	height: 100px;
+}
+
+footer p{
+	margin: 0;
+	padding: 0;
+}
+
+footer a{
+	color: #fff;
+}
+
+footer a:hover{
+	color: #965924;
+}
+
+footer .logo h1 {
+  text-transform: none;
+  font-variant: small-caps;
+}

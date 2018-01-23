@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDECG - Maps</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+<style type="text/css">
+table.key {
+    width: auto;
+    border: 0 none;
+    border-collapse: separate;
+    border-spacing: 0.25em;
+    margin-top: 2em;
+}
+
+table.key tr {
+    background: transparent;
+    margin: 0.25em 0;
+}
+
+table.key tr th {
+    padding: 0.5em 0;
+}
+
+table.key tr td:first-child {
+    width: 2.5em;
+    height: 2.5em;
+    border: 1px solid #454545;
+}
+
+table.key tr td {
+    color: #454545;
+}
+</style>
+  </head>
+
+  <body>
+    <section>
+      <header>
+        <div class="row" style="position:relative; z-index:10">
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <span class="toggle-topbar menu-icon">
+                <a href="#"><span>Menu</span></a>
+              </span>
+            </ul>
+            <section class="top-bar-section">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="crime.html">Neighbourhood Watch</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </section>
+          </nav>
+        </div>
+      </header>
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>West Didsbury Estate Maps</h1>
+          <p>Maps of the estate showing who has responsibility for what areas. Click the map to see a larger image.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-3 medium-push-9 columns">
+          <a data-title="Basic map of the West Didsbury Estate"
+             data-map="standard_map">Estate map</a>
+          <a data-title="Areas in blue are controlled by Southway Housing"
+             data-map="southway_map">Southway map</a>
+          <a data-title="Areas in blue are controlled by Manchester City Council"
+             data-map="council_map">Manchester City Council map</a>
+          <a data-title="Areas in blue are controlled by the Environment Agency"
+             data-map="environ_agency_map">Environment Agency map</a>
+        </div>
+        <div class="small-12 medium-9 medium-pull-3 columns">
+          <h4 id="map-title">Basic map of the West Didsbury Estate</h4>
+          <a href="img/standard_map.opt.svg" id="map-link">
+            <img src="img/standard_map.jpg" id="map-image" />
+          </a>
+          <table class="key">
+            <tr><th colspan="2">Key</th></tr>
+            <tr><td style="background: repeating-linear-gradient(135deg, #b3e3b3, #b3e3b3 0.2em, #250 0.2em, #250 0.3em)">&nbsp;</td><td>Southway controlled green space</td></tr>
+            <tr><td style="background: #e6e5e1">&nbsp;</td><td>Housing</td></tr>
+            <tr><td style="background: #ffe0b1">&nbsp;</td><td>Business</td></tr>
+            <tr><td style="background: #b5b5b5">&nbsp;</td><td>Housing area covered by WDECG</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="row">
+        <div class="small-12 medium-6 columns copyrights">
+          <h1>West Didsbury Estate Community Group</h1>
+          <p>Established 2017</p>
+        </div>
+        <div class="small-12 medium-6 columns contact">
+          <p><a href="mailto:contact@westdidscommunity.co.uk">contact@westdidscommunity.co.uk</a></p>
+          <p>07396-177378</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="js/foundation.min.js"></script>
+    <script type="text/javascript" src="js/foundation/foundation.topbar.js"></script>
+    <script type="text/javascript" src="js/scrollTo.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+  </body>
+</html>

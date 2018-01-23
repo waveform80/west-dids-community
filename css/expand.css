@@ -1,0 +1,18 @@
+.row.toggled {
+    background: #f1ffef;
+    padding: 0 20px;
+    margin: 0 auto;
+    min-height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: min-height .5s, padding .5s;
+}
+
+@media only screen and (max-width: 40em) {
+    .row.toggled {
+        background: transparent;
+        padding: 0 20px;
+        min-height: inherit;
+        max-height: inherit;
+    }
+}
