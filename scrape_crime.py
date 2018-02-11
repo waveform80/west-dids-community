@@ -18,10 +18,11 @@ def parse_cells(row):
         if ix == 0:
             yield dt.datetime.strptime(cell.text, '%b %Y').date()
         elif 'colspan' in cell.attrs:
-            value = int(cell.text)
+            # Ignore spanned values; these are historically "combined" values
+            # which are now separated in the stats. To avoid drawing invaild
+            # inferences we simply ignore the historic combined ones
             for span in range(int(cell.attrs['colspan'])):
-                yield value
-                value = None
+                yield None
         else:
             yield int(cell.text)
 
