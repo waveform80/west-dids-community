@@ -1,6 +1,6 @@
 (function() {
-    var width = 100;
-    var height = 25;
+    var width = 150;
+    var height = 20;
 
     d3.json('crime.json').then(function(crimes) {
         /* Convert dates to JS Date objects */
@@ -41,19 +41,34 @@
         var y = d3.scaleLinear().range([height, 0]);
         var line = d3.line()
             .x(function(d) { return x(d.month); })
-            .y(function(d) { return y(d.count); });
+            .y(function(d) { return y(d.count) + 2; });
 
-        tr.selectAll('td:last-child')
+        var svgs = tr.selectAll('td:last-child')
             .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .append('path')
             .datum(function(data) { return data.incidents; })
+            .attr('width', width + 2)
+            .attr('height', height + 4);
+
+        svgs
+            .append('path')
             .attr('class', 'sparkline')
             .attr('d', function(data) {
                 x.domain([data[0].month, data[data.length - 1].month]);
                 y.domain(d3.extent(data, function(d) { return d.count; }));
                 return line(data);
+            });
+
+        svgs
+            .append('circle')
+            .attr('class', 'marker')
+            .attr('r', 2)
+            .attr('cx', function(data) {
+                x.domain([data[0].month, data[data.length - 1].month]);
+                return x(data[data.length - 1].month);
+            })
+            .attr('cy', function(data) {
+                y.domain(d3.extent(data, function(d) { return d.count; }));
+                return y(data[data.length - 1].count) + 2;
             });
     });
 })();
