@@ -26,8 +26,13 @@ def parse_cells(row):
         else:
             yield int(cell.text)
 
+replacements = {
+    'ASB': 'Anti-social Behaviour',
+    'CD&A': 'Criminal Damage & Arson',
+}
+
 header = [
-    th.text
+    replacements.get(th.text, th.text)
     for tr in table.find('thead').find_all('tr')
     for th in tr.find_all('th')[1:]
 ]

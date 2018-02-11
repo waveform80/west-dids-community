@@ -1,5 +1,5 @@
 (function() {
-    var width = 150;
+    var width = 100;
     var height = 20;
 
     d3.json('crime.json').then(function(crimes) {
@@ -66,7 +66,10 @@
             .attr('class', 'sparkline')
             .attr('d', function(data) {
                 x.domain([data[0].month, data[data.length - 1].month]);
-                y.domain(d3.extent(data, function(d) { return d.count; }));
+                /* Ensure the delta of the Y-axis is at least 5 */
+                y_extent = d3.extent(data, function(d) { return d.count; });
+                y_extent[1] = d3.max([y_extent[0] + 5, y_extent[1]]);
+                y.domain(y_extent);
                 return line(data);
             });
 
