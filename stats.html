@@ -7,23 +7,11 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/foundation.min.css" />
     <link rel="stylesheet" href="css/main.css" />
-    <style type="text/css">
-    section .blue {
-        color: #8bb3f4;
-        font-weight: bold;
-    }
-
-    section .red {
-        color: #c45858;
-        font-weight: bold;
-    }
-
-    section .blue_cell {
-        background-color: #8bb3f4;
-    }
-
-    section .red_cell {
-        background-color: #c45858;
+    <style>
+    .sparkline {
+      fill: none;
+      stroke: #444;
+      stroke-width: 1px;
     }
     </style>
   </head>
@@ -69,106 +57,11 @@
       <div class="row">
         <div class="small-12 columns">
           <p>Types of crime that have <span class="red">increased</span> in the last month are marked in red. Types of crime that have <span class="blue">decreased</span> in the last month are marked in blue.</p>
-          <table>
+          <table id="crime-stats">
             <thead>
-              <tr>
-                <th>Crime</th>
-                <th>October 2017</th>
-                <th>November 2017</th>
-                <th>December 2017</th>
-              </tr>
+              <tr><th>Crime</th><th>Last Month</th><th>This Month</th><th>Trend</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="blue_cell">All crime</td>
-                <td>162</td>
-                <td>178</td>
-                <td>151</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Anti-social behaviour</td>
-                <td>18</td>
-                <td>22</td>
-                <td>18</td>
-              </tr>
-              <tr>
-                <td>Bicycle theft</td>
-                <td>3</td>
-                <td>4</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Burglary</td>
-                <td>25</td>
-                <td>35</td>
-                <td>31</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Criminal damage and arson</td>
-                <td>14</td>
-                <td>14</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Drugs</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td class="red_cell">Other crime</td>
-                <td>1</td>
-                <td>0</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Other theft</td>
-                <td>12</td>
-                <td>9</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>Posession of weapons</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Public order</td>
-                <td>16</td>
-                <td>12</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td bgcolor="#c45858">Robbery</td>
-                <td>2</td>
-                <td>0</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Shoplifting</td>
-                <td>17</td>
-                <td>18</td>
-                <td>7</td>
-              </tr>
-              <tr>
-                <td class="red_cell">Theft from person</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td class="blue_cell">Vehicle crime</td>
-                <td>21</td>
-                <td>43</td>
-                <td>25</td>
-              </tr>
-              <tr>
-                <td class="red_cell">Violence and sexual offences</td>
-                <td>31</td>
-                <td>18</td>
-                <td>27</td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -195,5 +88,8 @@
     <script type="text/javascript" src="js/foundation/foundation.topbar.js"></script>
     <script type="text/javascript" src="js/scrollTo.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-fetch.v1.min.js"></script>
+    <script type="text/javascript" src="js/stats.js"></script>
   </body>
 </html>
