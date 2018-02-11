@@ -11,6 +11,18 @@
             });
         });
 
+        /* Fill in the header */
+        var formatDate = d3.timeFormat('%B %Y');
+        var tr = d3
+            .select('table#crime-stats thead')
+            .append('tr');
+
+        tr.append('th').text('Crime');
+        var totals = crimes[crimes.length - 1];
+        tr.append('th').text(formatDate(totals.incidents[totals.incidents.length - 2].month));
+        tr.append('th').text(formatDate(totals.incidents[totals.incidents.length - 1].month));
+        tr.append('th').text('Trend');
+
         /* Append a row per crime to the table */
         var tr = d3
             .select('table#crime-stats tbody')
