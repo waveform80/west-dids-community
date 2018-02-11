@@ -1,3 +1,5 @@
 police-api-client<2.0dev
 sqlalchemy<2.0dev
-python-dateutil<3.0dev
+python-dateutil
+beautifulsoup4<5.0dev
+html5lib
