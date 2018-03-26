@@ -74,6 +74,7 @@ class PoliceUKStats:
         self.start = start
         self.force = self.api.get_force(force)
         self.location = self.api.get_neighbourhood(self.force, location)
+        months = [dt.datetime.strptime(d, '%Y-%m') for d in self.api.get_dates()]
 
         categories = {
             category.name
@@ -91,13 +92,13 @@ class PoliceUKStats:
                         key=lambda crime: crime.category.name),
                     key=lambda crime: crime.category.name)
             }
-            for month in self.months
+            for month in months
         }
 
         self.data = {
             category: {
                 month: data[month][category]
-                for month in self.months
+                for month in months
                 if category in data[month]
             }
             for category in categories
@@ -105,16 +106,8 @@ class PoliceUKStats:
 
         self.data['Total'] = {
             month: sum(stats.get(month, 0) for category, stats in self.data.items())
-            for month in self.months
+            for month in months
         }
-
-    @property
-    def months(self):
-        month = self.start
-        latest = dt.datetime.strptime(self.api.get_latest_date(), '%Y-%m').date()
-        while month <= latest:
-            yield month
-            month += relativedelta(months=1)
 
 
 class Database:
