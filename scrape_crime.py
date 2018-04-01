@@ -60,20 +60,35 @@ class UKCrimeStats:
                 # Ignore spanned values; these are historically "combined"
                 # values which are now separated in the stats. To avoid drawing
                 # invalid inferences we simply ignore the historic combined
-                # ones
+                # ones (note the total is included in the original data and
+                # we don't re-calculate it, so this does not distort the total)
                 for span in range(int(cell.attrs['colspan'])):
                     yield None
             else:
                 yield int(cell.text)
 
+    @property
+    def categories(self):
+        return self.data.keys()
+
+    @property
+    def dates(self):
+        return sorted({
+            date for category in self.data for date in self.data[category]
+        })
+
 
 class PoliceUKStats:
-    def __init__(self, force='greater-manchester', location='EC25',
-                 start=dt.date(2015, 1, 1)):
+    def __init__(self, force='greater-manchester', location='EC25', start=None):
         self.api = PoliceAPI()
-        self.start = start
         self.force = self.api.get_force(force)
         self.location = self.api.get_neighbourhood(self.force, location)
+        months = [
+            dt.datetime.strptime(d, '%Y-%m').date()
+            for d in self.api.get_dates()
+        ]
+        if start is not None:
+            months = [month for month in months if month >= start]
 
         categories = {
             category.name
@@ -91,13 +106,13 @@ class PoliceUKStats:
                         key=lambda crime: crime.category.name),
                     key=lambda crime: crime.category.name)
             }
-            for month in self.months
+            for month in months
         }
 
         self.data = {
             category: {
                 month: data[month][category]
-                for month in self.months
+                for month in months
                 if category in data[month]
             }
             for category in categories
@@ -105,16 +120,18 @@ class PoliceUKStats:
 
         self.data['Total'] = {
             month: sum(stats.get(month, 0) for category, stats in self.data.items())
-            for month in self.months
+            for month in months
         }
 
     @property
-    def months(self):
-        month = self.start
-        latest = dt.datetime.strptime(self.api.get_latest_date(), '%Y-%m').date()
-        while month <= latest:
-            yield month
-            month += relativedelta(months=1)
+    def categories(self):
+        return self.data.keys()
+
+    @property
+    def dates(self):
+        return sorted({
+            date for category in self.data for date in self.data[category]
+        })
 
 
 class Database:
@@ -130,6 +147,28 @@ class Database:
             sa.CheckConstraint('incidents >= 0', name='incidents_ck')
         )
         self.metadata.create_all(self.engine)
+
+    @property
+    def categories(self):
+        with self.engine.connect() as conn:
+            with conn.begin():
+                return {
+                    row.category
+                    for row in conn.execute(
+                        sa.select([self.table.c.category]).distinct()
+                    )
+                }
+
+    @property
+    def dates(self):
+        with self.engine.connect() as conn:
+            with conn.begin():
+                return [
+                    row.month
+                    for row in conn.execute(
+                        sa.select([self.table.c.month]).distinct().order_by(self.table.c.month)
+                    )
+                ]
 
     def update(self, data):
         insert = self.table.insert()
@@ -180,14 +219,27 @@ class Database:
 
 
 def main():
-    print('Retrieving data from UK Crime Stats')
-    source1 = UKCrimeStats()
-    print('Retrieving data from Police UK')
-    source2 = PoliceUKStats()
-    print('Merging into database')
+    print('Opening database')
     db = Database()
-    db.update(source1.data)
-    db.update(source2.data)
+    if not db.categories:
+        # Only grab data from UK crime stats if this is the very first run
+        # (it's only used for historical purposes)
+        print('Retrieving data from UK Crime Stats')
+        source1 = UKCrimeStats()
+        print('Inserting into database')
+        db.update(source1.data)
+        # If this is the first run, grab everything from Police UK
+        print('Retrieving data from Police UK')
+        source2 = PoliceUKStats()
+        print('Merging into database')
+        db.update(source2.data)
+    else:
+        # If this is a later update run, refresh the last years worth of
+        # stats from Police UK (in case of updates)
+        print('Retrieving data from Police UK')
+        source2 = PoliceUKStats(start=db.dates[-1] - relativedelta(years=1))
+        print('Merging into database')
+        db.update(source2.data)
     print('Writing JSON output')
     with io.open('crime.json', 'w', encoding='utf-8') as f:
         f.write(db.json)
