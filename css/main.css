@@ -542,6 +542,10 @@ body.orange .btn-fancy .solid-layer {
         transition: all .2s linear;
     }
 
+    .hero header {
+        height: 50px;
+    }
+
     header .top-bar-section li:not(.has-form):last-child a:not(.button) {
         border: 0;
     }
