@@ -82,7 +82,10 @@
                 return x(data[data.length - 1].month);
             })
             .attr('cy', function(data) {
-                y.domain(d3.extent(data, function(d) { return d.count; }));
+                /* Ensure the delta of the Y-axis is at least 5 */
+                y_extent = d3.extent(data, function(d) { return d.count; });
+                y_extent[1] = d3.max([y_extent[0] + 5, y_extent[1]]);
+                y.domain(y_extent);
                 return y(data[data.length - 1].count) + 2;
             });
     });
