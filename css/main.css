@@ -288,7 +288,7 @@ header .top-bar-section li:not(.has-form) a:not(.button):hover {
  */
 
 .twitter {
-    max-height: 700px;
+    max-height: 450px;
     max-width: 400px;
     overflow: auto;
 }
